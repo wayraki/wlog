@@ -1,0 +1,83 @@
+<aside id="aside" class="aside">
+    <div class="site-author">
+        <img class="site-author-image" src="http://simpleyyt.com/jekyll-theme-next/assets/images/avatar.gif" alt="wayraki">
+        <p class="site-author-name">wayraki</p>
+        <p class="site-description">Elegant theme for Jekyll.</p>
+    </div>
+    <nav class="site-state">
+        <div class="site-state-item">
+            <a href="#">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">posts</span>
+            </a>
+        </div>
+        <div class="site-state-rule"></div>
+        <div class="site-state-item">
+            <a href="#">
+                <span class="site-state-item-count">0</span>
+                <span class="site-state-item-name">categories</span>
+            </a>
+        </div>
+        <div class="site-state-rule"></div>
+        <div class="site-state-item">
+            <a href="#">
+                <span class="site-state-item-count">0</span>
+                <span class="site-state-item-name">tags</span>
+            </a>
+        </div>
+    </nav>
+</aside>
+<div id="sidebar" class="rd-btn sidebar">
+    <i class="fa fa-bars"></i>
+</div>
+<div id="scrollto" class="rd-btn scrollto">
+    <i class="fa fa-arrow-up"></i>
+</div>
+<footer id="footer" class="footer">
+    <div class="copyright">
+        <span>©2017</span>
+        <i class="fa fa-heart"></i>
+        <span>wayraki</span>
+    </div>
+    <div class="powered-by">
+        Powered by
+        <a class="link" href="https://jekyllrb.com" target="_black">Jekyll</a>
+        <span>.</span>
+        <a class="link" href="https://github.com/simpleyyt/jekyll-theme-next" target="_black">NexT</a>
+        <span>&nbsp;&nbsp;version:0.1</span>
+    </div>
+</footer>
+<script>
+    window.onscroll = function () {
+        if (document.documentElement.scrollTop + document.body.scrollTop > 100) {
+            document.getElementById('scrollto').style.bottom = '20px';
+        } else {
+            document.getElementById('scrollto').style.bottom = '-100px';
+        }
+    }
+    window.onload = function () {
+        document.getElementById('sidebar').addEventListener('click', function () {
+            if (document.getElementById('aside').style.transform != 'translateX(0px)') {
+                document.body.style.width = 'calc(100% - 320px)';
+                document.getElementById('aside').style.transform = 'translateX(0px)';
+            } else {
+                document.body.style.width = '100%';
+                document.getElementById('aside').style.transform = 'translateX(100%)';
+            }
+
+        }, false);
+        document.getElementById('scrollto').addEventListener('click', function () {
+            var timer = setInterval(function () {
+                var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var ispeed = Math.floor(-osTop / 10);
+                document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
+                if (osTop <= 0) {
+                    clearInterval(timer);
+                };
+            }, 16);
+        }, false);
+    }
+</script>
+</body>
+
+</html>

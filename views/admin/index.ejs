@@ -1,0 +1,67 @@
+<% include header %>
+    <div id="root" class="root">
+        <% include aside %>
+            <section>
+                <% include nav %>
+                    <main class="main">
+                        <!-- <p>首页/表单页/基础表单</p> -->
+                        <h1>文章列表</h1>
+                        <button class="add" onclick="addPost()">新增</button>
+                        <div class="list">
+                            <table width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>标题</th>
+                                        <th>发布时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% data.forEach(function(item){%>
+                                        <tr>
+                                            <td>
+                                                <%=item.id %>
+                                            </td>
+                                            <td>
+                                                <a href=<%="/admin/post/" + item.id %>>
+                                                    <%=item.title %>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <%=item.created_at %>
+                                            </td>
+                                            <td>
+                                                <a onclick="deletePost(<%=item.id %>)">删除</a>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </main>
+                    <% include copyright %>
+            </section>
+    </div>
+    <% include footer %>
+        <script>
+            function addPost() {
+                location.pathname = '/admin/post/0'
+            }
+
+            function deletePost(id) {
+                var r = confirm("确认删除？")
+                if (r) {
+                    _$.ajax({
+                        type: 'DELETE',
+                        url: '/api/post',
+                        data: {
+                            id: id
+                        },
+                        success: function (response) {
+                            location.reload()
+                        }
+                    })
+                }
+            }
+        </script>

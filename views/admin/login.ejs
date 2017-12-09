@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>wlog</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/stylesheets/adminstyle.css">
+</head>
+
+<body>
+    <div id="root" class="root">
+        <div class="login">
+            <div class="form">
+                <p class="title">WLog</p>
+                <input id="username" type="text" placeholder="用户名">
+                <input id="password" type="password" placeholder="密码">
+                <button onclick="loginHandle()">登录</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script src="/javascripts/utils.js"></script>
+<script>
+    function loginHandle() {
+        var username = document.getElementById("username").value
+        var password = document.getElementById("password").value
+        if (!username || !password) {
+            alert("请输入账号或密码")
+            return
+        }
+        var passwordMD5 = md5(password)
+        _$.ajax({
+            type: 'POST',
+            url: '/api/login',
+            data: {
+                username: username,
+                password: passwordMD5
+            },
+            success: function (data) {
+                if (data.code == 0) {
+                    location.pathname = "/admin"
+                } else {
+                    alert(data.msg)
+                }
+            }
+        })
+    }
+</script>
+
+</html>

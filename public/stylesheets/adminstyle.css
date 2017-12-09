@@ -1,0 +1,312 @@
+/* reset */
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+p,
+blockquote,
+pre,
+hr,
+figure,
+table,
+caption,
+th,
+td,
+form,
+fieldset,
+legend,
+input,
+button,
+textarea,
+menu {
+    margin: 0;
+    padding: 0;
+}
+
+header,
+footer,
+section,
+article,
+aside,
+nav,
+hgroup,
+address,
+figure,
+figcaption,
+menu,
+details {
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+caption,
+th {
+    font-weight: normal;
+}
+
+html,
+body,
+fieldset,
+img,
+iframe,
+abbr {
+    border: 0;
+}
+
+i,
+cite,
+em,
+var,
+address,
+dfn {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+del,
+ins,
+u,
+s,
+a,
+a:hover {
+    text-decoration: none;
+}
+
+a {
+    color: #555;
+}
+
+a:hover {
+    color: #222;
+    border-bottom-color: #222;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+/* body */
+
+body {
+    width: 100%;
+    font-family: "Helvetica", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+}
+
+.root {
+    display: flex;
+}
+
+.root .login {
+    background: #f0f2f5;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.login .form {
+    width: 368px;
+    margin: 30vh auto;
+}
+
+.login p {
+    text-align: center;
+    font-size: 33px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.login input {
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    margin: 16px auto;
+    padding: 4px 11px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.65);
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    transition: all .3s;
+}
+
+.login input:hover {
+    border-color: #40a9ff;
+}
+
+.login input:focus {
+    box-shadow: rgba(24, 144, 255, 0.2) 0px 0px 0px 2px;
+    border-color: rgb(64, 169, 255);
+    outline: 0px;
+}
+
+.login button {
+    width: 100%;
+    height: 40px;
+    margin-top: 16px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #1890ff;
+}
+
+.root aside {
+    width: 0;
+    flex-shrink: 0;
+    flex-basis: 256px;
+    min-height: 100vh;
+    background-color: #001529;
+    transition: flex-basis .5s ease-in-out;
+}
+
+.logo {
+    width: 256px;
+    height: 64px;
+    line-height: 64px;
+    padding-left: 50px;
+    transition: all .3s;
+    background: #002140;
+}
+
+.logo img {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+    height: 32px;
+}
+
+.logo span {
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.aside .menu {
+    width: 256px;
+    padding-top: 16px;
+}
+
+.aside .menu li {
+    padding-left: 40px;
+    margin: 4px 0;
+    font-size: 14px;
+    line-height: 40px;
+    height: 40px;
+    color: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+}
+
+.aside .menu li a {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.root section {
+    flex: auto;
+    min-width: 800px;
+    background: #f0f2f5;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    line-height: 64px;
+    text-align: center;
+    background: #fff;
+}
+
+.header .menu {
+    width: 50px;
+}
+
+.header .nav {
+    display: flex;
+}
+
+.header .nav form {
+    padding-right: 20px;
+}
+
+.header .nav li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.main {
+    min-height: calc(100vh - 218px);
+    margin: 24px;
+    padding: 24px;
+    background: #fff;
+}
+
+.main .add{
+    margin: 20px 0;
+}
+
+.main table {
+    text-align: center;
+    color: #555;
+}
+
+.main table tr {
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.main table th,
+.main table td {
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.main .editor-title{
+    margin: 10px 0;
+}
+
+.footer {
+    margin: 48px 0 24px;
+    text-align: center;
+}
+
+.footer .links {
+    display: flex;
+    justify-content: space-around;
+    margin: 8px auto;
+    width: 350px;
+    height: 25px;
+    line-height: 25px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.footer .links a {
+    color: rgba(0, 0, 0, 0.45);
+    transition: color .3s;
+}
+
+.footer .links a:hover {
+    color: rgba(0, 0, 0, 0.65);
+}

@@ -1,0 +1,38 @@
+<% include header %>
+    <main id="main" class="main">
+        <% data.forEach(function(item){%>
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">
+                        <a class="post-title-link" href="#">
+                            <%=item.title %>
+                        </a>
+                    </h1>
+                    <div class="post-meta">
+                        <span class="post-time">
+                            <i class="post-meta-icon fa fa-calendar-o"></i>
+                            <span class="post-meta-item-text">Posted on</span>
+                            <time>
+                                <%=item.created_date.toLocaleString() %>
+                            </time>
+                        </span>
+                        <span class="post-category">
+                            <span class="post-meta-divider">|</span>
+                            <i class="post-meta-icon fa fa-folder-o"></i>
+                            <span class="post-meta-item-text">In</span>
+                            <a class="post-meta-item-category" href="#">wayraki</a>
+                        </span>
+                    </div>
+                </header>
+                <div class="post-content">
+                    <%-item.content %>
+                </div>
+                <div class="post-button">
+                    <div class="readmore-mask"></div>
+                    <a href=<%="/post/" +item.id %>>Read more »</a>
+                </div>
+                <footer class="post-footer"></footer>
+            </article>
+            <% }) %>
+    </main>
+    <% include footer %>

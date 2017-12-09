@@ -1,0 +1,63 @@
+<% include header %>
+    <div id="root" class="root">
+        <% include aside %>
+            <section>
+                <% include nav %>
+                    <main class="main">
+                        <!-- <p>首页/表单页/基础表单</p> -->
+                        <h1>文章</h1>
+                        <div class="editor-title">
+                            <span>标题：</span>
+                            <input type="text" id="title" value="<%= data[0] ? data[0].title : '' %>">
+                        </div>
+                        <div id="editormd">
+                            <textarea name="content" style="width:100%;height:600px;visibility:hidden;">
+                                <%=data[0] ? data[0].content : '' %>
+                            </textarea>
+                        </div>
+                        <input type="button" onclick="sub()" value="提交">
+                    </main>
+                    <% include copyright %>
+            </section>
+    </div>
+    <% include footer %>
+        <script src="/lib/kindeditor/kindeditor-min.js"></script>
+        <script>
+            var editor;
+            KindEditor.ready(function (K) {
+                editor = K.create('textarea[name="content"]', {})
+            });
+
+            function sub() {
+                if (<%=state =='add' %>) {
+                    _$.ajax({
+                        type: 'POST',
+                        url: '/api/post',
+                        data: {
+                            title: document.getElementById("title").value,
+                            content: encodeURIComponent(editor.html())
+                        },
+                        success: function (data) {
+                            if (data.code == 0) {
+                                location.pathname = '/admin'
+                            }
+                        }
+                    })
+                } else if (<%=state =='edit' %>) {
+                    _$.ajax({
+                        type: 'PUT',
+                        url: '/api/post',
+                        data: {
+                            id: <%=id %>,
+                            title: document.getElementById("title").value,
+                            content: encodeURIComponent(editor.html())
+                        },
+                        success: function (data) {
+                            if (data.code == 0) {
+                                location.pathname = '/admin'
+                            }
+                        }
+                    })
+                }
+            }
+        </script>
